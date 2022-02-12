@@ -1,0 +1,45 @@
+{
+  "name": "graphql-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "build": "yarn build:types && yarn build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
+    "build:watch": "yarn build:js --watch",
+    "start": "yarn concurrently \"yarn build:watch\" \"nodemon dist/index.js\"",
+    "lint": "eslint . --ext .ts"
+  },
+  "keywords": [],
+  "author": "gileadekelvin",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
+    "@types/node": "^17.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "babel-polyfill": "^6.26.0",
+    "concurrently": "^6.5.1",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.6.0",
+    "apollo-server-express": "^3.6.0",
+    "express": "^4.17.2",
+    "graphql": "^16.2.0"
+  },
+  "peerDependencies": {
+    "eslint-config-airbnb": "^19.0.4"
+  }
+}
