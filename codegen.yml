@@ -1,0 +1,12 @@
+overwrite: true
+generates:
+  data/schema.graphql:
+    schema:
+      - src/modules/**/*.gql
+    plugins:
+      - schema-ast
+  src/modules/schema.ts:
+    schema: src/modules/**/*.gql
+    plugins:
+      - typescript
+      - typescript-resolvers

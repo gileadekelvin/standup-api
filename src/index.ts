@@ -1,43 +1,18 @@
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
 
-const typeDefsC = gql`
-  type Book {
-    title: String
-    author: String
-  }
+import { buildCompleteSchema } from './buildSchema';
 
-  type Query {
-    books: [Book]
-  }
-`;
-
-const books = [
-  {
-    title: 'The Awakenings',
-    author: 'Kate Chopins',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul sdahdjad',
-  },
-];
-
-const resolversC = {
-  Query: {
-    books: () => books,
-  },
-};
-
-async function startApolloServer(typeDefs: any, resolvers: any) {
+async function startApolloServer() {
   const app = express();
   const httpServer = http.createServer(app);
 
+  const schema = buildCompleteSchema();
+
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
 
@@ -50,4 +25,4 @@ async function startApolloServer(typeDefs: any, resolvers: any) {
   console.log(`🚀 Server ready at http://localhost:5000${server.graphqlPath}`);
 }
 
-startApolloServer(typeDefsC, resolversC);
+startApolloServer();

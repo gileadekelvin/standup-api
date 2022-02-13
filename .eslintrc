@@ -8,6 +8,18 @@
   ],
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "no-console": 2
+    "no-console": 2,
+    "arrow-body-style": 0,
+    "implicit-arrow-linebreak": 0,
+    "import/extensions": [0, "never", { "ts": "never" }],
+    "import/prefer-default-export": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "eslint-import-resolver-typescript": true
+    }
   }
 }
