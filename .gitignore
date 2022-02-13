@@ -3,3 +3,5 @@ dist/
 data/schema.graphql
 yarn-error.log
 src/modules/schema.ts
+.vscode/*
+!.vscode/settings.json

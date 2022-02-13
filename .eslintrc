@@ -1,5 +1,14 @@
 {
   "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.gql"],
+      "extends": "plugin:@graphql-eslint/schema-recommended",
+      "parserOptions": {
+        "schema": "./data/schema.graphql"
+      }
+    }
+  ],
   "extends": [
     "airbnb-base",
     "eslint:recommended",
