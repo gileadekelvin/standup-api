@@ -51,3 +51,25 @@ The next steps are (not in that order):
 - [@graphql-tools](https://www.graphql-tools.com/): is a set of NPM packages and an opinionated structure for how to build a GraphQL schema and resolvers in JavaScript/TypeScript, following the GraphQL-first development workflow.
 - [@graphql-codegen](https://www.graphql-code-generator.com/): to generate code (merged schema and types for typescript) from th GraphQL Schema.
 - [@graphql-eslint](https://github.com/dotansimha/graphql-eslint): integrate GraphQL and ESLint to define rules to a better development experience.
+
+## Useful commands
+
+1. Build js and types
+```sh
+yarn build
+```
+
+2. Generate `data/schema.graphql` and `schema.ts` (types and interfaces for typescript)
+```sh
+yarn gen-schema-types
+```
+
+3. Lint code
+```sh
+yarn lint
+```
+
+4. Type check for typescript
+```sh
+yarn type-check
+```
