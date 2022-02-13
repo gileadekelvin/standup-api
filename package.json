@@ -2,22 +2,21 @@
   "name": "graphql-api",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "/packages/api/src/index.js",
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "tsc --noEmit --watch",
-    "build": "yarn build:types && yarn build:js",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
-    "build:watch": "yarn build:js --watch",
-    "start": "yarn concurrently \"yarn build:watch\" \"nodemon dist/index.js\"",
-    "lint": "eslint . --ext .ts,.gql",
+    "build": "yarn workspace @package/api build",
+    "lint": "eslint . --ext .ts,.gql 'packages/**/src/**'",
+    "start": "yarn workspace @package/api start",
     "gen-schema-types": "graphql-codegen --config codegen.yml",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "gileadekelvin",
   "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",
@@ -40,20 +39,13 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
+    "graphql": "^16.3.0",
     "husky": "^7.0.0",
+    "lerna": "^4.0.0",
     "nodemon": "^2.0.15",
     "typescript": "^4.5.4"
   },
-  "dependencies": {
-    "@graphql-tools/load-files": "^6.5.3",
-    "@graphql-tools/merge": "^8.2.2",
-    "@graphql-tools/schema": "^8.3.1",
-    "apollo-server-core": "^3.6.0",
-    "apollo-server-express": "^3.6.0",
-    "express": "^4.17.2",
-    "graphql": "^16.3.0"
-  },
   "peerDependencies": {
-    "eslint-config-airbnb": "^19.0.4"
+    "eslint-config-airbnb": "19.0.4"
   }
 }

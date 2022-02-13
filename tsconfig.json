@@ -24,6 +24,8 @@
     "declaration": true,
     "baseUrl": "."
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts"]
+  "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
+  "paths": {
+    "@package/api": ["packages/api/src"],
+  }
 }

@@ -33,7 +33,6 @@ If you are using VSCode, you should install this recommended extensions:
 This repo is in constant change.
 The next steps are (not in that order):
 
-- Monorepo
 - MongoDB configuration
 - Jest configuration
 - Coverage tool configuration

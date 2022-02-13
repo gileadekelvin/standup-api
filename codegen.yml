@@ -2,11 +2,11 @@ overwrite: true
 generates:
   data/schema.graphql:
     schema:
-      - src/modules/**/*.gql
+      - packages/api/src/modules/**/*.gql
     plugins:
       - schema-ast
-  src/modules/schema.ts:
-    schema: src/modules/**/*.gql
+  packages/api/src/modules/schema.ts:
+    schema: packages/api/src/modules/**/*.gql
     plugins:
       - typescript
       - typescript-resolvers
