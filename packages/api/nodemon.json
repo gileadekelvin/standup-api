@@ -1,0 +1,23 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "dist/**/__test__",
+    "dist/**/__tests__",
+    "**/*.spec.ts",
+    "**/*.spec.js",
+    "**/*.map",
+    "src"
+  ],
+  "verbose": true,
+  "execMap": {
+    "ts": "yarn start"
+  },
+  "watch": ["./dist"],
+  "delay": "1000",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "ts,json,graphql,gql ,js"
+}
