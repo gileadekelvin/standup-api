@@ -39,6 +39,7 @@ The next steps are (not in that order):
 - Coverage tool configuration
 - Docker support
 - Deploy support
+- CI/CD configuration
 
 ## Some decisions and tools used in this repo
 
