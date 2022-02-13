@@ -6,6 +6,7 @@
   "scripts": {
     "build": "yarn workspace @package/api build",
     "lint": "eslint . --ext .ts,.gql 'packages/**/src/**'",
+    "type-check": "yarn workspace @package/api build:types",
     "start": "yarn workspace @package/api start",
     "gen-schema-types": "graphql-codegen --config codegen.yml",
     "prepare": "husky install"
