@@ -14,6 +14,13 @@ yarn
 ```
 
 2. Start the server:
+
+With docker-compose:
+```sh
+HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up api
+```
+
+Without docker-compose:
 ```sh
 yarn start
 ```
@@ -36,7 +43,6 @@ The next steps are (not in that order):
 - MongoDB configuration
 - Jest configuration
 - Coverage tool configuration
-- Docker support
 - Deploy support
 - CI/CD configuration
 

@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  api:
+    image: node:12.22.6
+    user: $HOSTUSER
+    working_dir: /home/$USER/app
+    volumes:
+      - .:/home/$USER/app
+      - /home/$USER/.cache/yarn:/home/$USER/.cache/yarn
+      - /home/$USER/.yarn:/home/$USER/.yarn
+    ports:
+      - 5000:5000
+    command: yarn start
