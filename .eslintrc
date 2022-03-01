@@ -6,6 +6,17 @@
       "extends": "plugin:@graphql-eslint/schema-recommended",
       "parserOptions": {
         "schema": "./data/schema.graphql"
+      },
+      "rules": {
+        "@graphql-eslint/naming-convention": ["error", { "allowLeadingUnderscore": true }],
+        "@graphql-eslint/strict-id-in-types": [
+          "error",
+          {
+            "acceptedIdNames": ["id", "_id"],
+            "acceptedIdTypes": ["ID"],
+            "exceptions": { "types": ["Mutation"], "suffixes": ["Payload"] }
+          }
+        ]
       }
     }
   ],
@@ -21,7 +32,8 @@
     "arrow-body-style": 0,
     "implicit-arrow-linebreak": 0,
     "import/extensions": [0, "never", { "ts": "never" }],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "no-underscore-dangle": "off"
   },
   "settings": {
     "import/resolver": {

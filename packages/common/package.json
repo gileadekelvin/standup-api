@@ -1,14 +1,14 @@
 {
-  "name": "@package/api",
+  "name": "@package/common",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
   "scripts": {
     "build": "yarn build:types && yarn build:js",
     "build:types": "tsc --noEmit",
     "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
-    "build:watch": "yarn build:js --watch",
-    "start": "yarn concurrently \"yarn workspace @package/common build:watch\" \"yarn build:watch\" \"nodemon dist/index.js\""
+    "build:watch": "yarn build:js --watch"
   },
   "keywords": [],
   "author": "gileadekelvin",
@@ -19,18 +19,10 @@
     "@babel/plugin-transform-runtime": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
-    "concurrently": "^6.5.1",
-    "nodemon": "^2.0.15",
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@graphql-tools/load-files": "^6.5.3",
-    "@graphql-tools/merge": "^8.2.2",
-    "@graphql-tools/schema": "^8.3.1",
-    "apollo-server-core": "^3.6.0",
-    "apollo-server-express": "^3.6.0",
-    "express": "^4.17.2",
-    "graphql": "^16.3.0",
-    "@package/common": "*"
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.2"
   }
 }

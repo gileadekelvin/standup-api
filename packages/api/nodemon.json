@@ -14,10 +14,10 @@
   "execMap": {
     "ts": "yarn start"
   },
-  "watch": ["./dist"],
+  "watch": ["./dist", "../common/dist"],
   "delay": "1000",
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "ts,json,graphql,gql ,js"
+  "ext": "ts,json,graphql,gql,js"
 }

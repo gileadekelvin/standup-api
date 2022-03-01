@@ -2,7 +2,7 @@
 Book type
 """
 type Book {
-  id: ID!
+  _id: ID!
   title: String!
   author: String
   page: Int

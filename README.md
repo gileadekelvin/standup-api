@@ -13,11 +13,23 @@ To get started you should have `yarn` installed and follow the commands:
 yarn
 ```
 
-2. Start the server:
+2. Create a `.env` file and fill with variables that are listed in the `.env.sample` file
+
+```sh
+cp .env.sample .env
+```
+
+3. Start database:
+
+```sh
+docker-compose up -d mongo
+```
+
+4. Start the server:
 
 With docker-compose:
 ```sh
-HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up api
+HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up graphql-api
 ```
 
 Without docker-compose:
@@ -40,7 +52,6 @@ If you are using VSCode, you should install this recommended extensions:
 This repo is in constant change.
 The next steps are (not in that order):
 
-- MongoDB configuration
 - Jest configuration
 - Coverage tool configuration
 - Deploy support
@@ -66,7 +77,7 @@ yarn build
 
 2. Generate `data/schema.graphql` and `schema.ts` (types and interfaces for typescript)
 ```sh
-yarn gen-schema-types
+yarn generate-schema
 ```
 
 3. Lint code

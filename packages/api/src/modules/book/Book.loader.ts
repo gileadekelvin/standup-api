@@ -1,16 +1,7 @@
-export const loadBooks = () => {
-  const books = [
-    {
-      id: '1',
-      title: 'The Awakenings',
-      author: 'Kate Chopins',
-    },
-    {
-      id: '2',
-      title: 'City of Glass',
-      author: 'Paul John',
-    },
-  ];
+import { BookModel } from '@package/common';
+
+export const loadBooks = async () => {
+  const books = await BookModel.find({});
 
   return books;
 };

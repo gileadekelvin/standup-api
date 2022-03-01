@@ -1,8 +1,13 @@
 import { Resolvers } from '../schema';
 
+import { createBook } from './mutations/createBook';
+
 const book: Resolvers = {
   Book: {
-    page: () => Math.floor(Math.random() * 100),
+    author: (parent) => parent.author?.toUpperCase() as string,
+  },
+  Mutation: {
+    createBook: async (_, args) => createBook(args),
   },
 };
 

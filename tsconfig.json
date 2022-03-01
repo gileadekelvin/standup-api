@@ -22,10 +22,10 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "baseUrl": "."
-  },
-  "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
-  "paths": {
-    "@package/api": ["packages/api/src"],
+    "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
+    "paths": {
+      "@package/api": ["packages/api/src"],
+      "@package/common": ["packages/common/src"]
+    }
   }
 }
