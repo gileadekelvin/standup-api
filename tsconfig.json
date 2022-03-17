@@ -26,6 +26,7 @@
     "paths": {
       "@package/api": ["packages/api/src"],
       "@package/common": ["packages/common/src"]
-    }
-  }
+    },
+  },
+  "exclude": ["**/*.spec.ts"]
 }

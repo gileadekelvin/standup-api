@@ -24,16 +24,19 @@
     "airbnb-base",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
   ],
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jest"],
   "rules": {
     "no-console": 2,
     "arrow-body-style": 0,
     "implicit-arrow-linebreak": 0,
     "import/extensions": [0, "never", { "ts": "never" }],
     "import/prefer-default-export": 0,
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off"
   },
   "settings": {
     "import/resolver": {
@@ -41,6 +44,12 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       "eslint-import-resolver-typescript": true
+    },
+    "jest": {
+      "version": 27
     }
+  },
+  "env": {
+    "jest/globals": true
   }
 }

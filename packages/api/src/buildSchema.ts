@@ -12,7 +12,7 @@ export const getTypes = () => {
 
 export const getResolvers = () => {
   return loadFilesSync<string>(resolve(__dirname, 'modules', '**', '*'), {
-    extensions: ['.resolvers.js'],
+    extensions: ['.resolvers.js', '.resolvers.ts'],
   });
 };
 

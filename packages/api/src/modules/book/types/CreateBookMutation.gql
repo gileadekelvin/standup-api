@@ -1,16 +1,22 @@
-"""Mutation to create a book"""
+"""
+Mutation to create a book
+"""
 type Mutation {
   createBook(input: CreateBookInput!): CreateBookPayload
 }
 
-"""Input to create a book"""
+"""
+Input to create a book
+"""
 input CreateBookInput {
   title: String!
   author: String
   page: Int
 }
 
-"""Book Payload"""
+"""
+Book Payload
+"""
 type CreateBookPayload {
   Error: [String]
   Book: Book

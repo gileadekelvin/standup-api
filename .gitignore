@@ -1,8 +1,10 @@
 node_modules/
 dist/
+coverage/
 data/schema.graphql
 yarn-error.log
 packages/api/src/modules/schema.ts
 .vscode/*
 !.vscode/settings.json
 .env
+globalConfig.json

@@ -2,6 +2,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
+import { connectDB } from '@package/common';
 
 import { buildCompleteSchema } from './buildSchema';
 
@@ -15,6 +16,8 @@ async function startApolloServer() {
     schema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
+
+  connectDB();
 
   await server.start();
   server.applyMiddleware({ app });

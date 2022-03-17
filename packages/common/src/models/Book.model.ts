@@ -25,7 +25,7 @@ const schema = new mongoose.Schema(
 );
 
 export interface IBook extends Document {
-  id: string;
+  _id: string;
   title: string;
   author?: string;
   page?: number;
