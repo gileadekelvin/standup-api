@@ -1,5 +1,8 @@
 # GraphQL API
 
+![example workflow](https://github.com/gileadekelvin/graphql-api/actions/workflows/api.yml/badge.svg)
+
+
 This repository has the objective to configure a minimum API to be used and forked by future projects.
 
 The configuration used in this repository represents the best practices to develop a GraphQL API.
