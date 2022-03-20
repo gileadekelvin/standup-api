@@ -18,6 +18,8 @@ jobs:
           node-version: 12.x
       - name: Install dependencies
         run: yarn
+      - name: Generate schema
+        run: yarn generate-schema
       - name: Run lint
         run: yarn lint
       - name: Run tests
