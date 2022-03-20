@@ -4,7 +4,7 @@
   "description": "",
   "main": "/packages/api/src/index.js",
   "scripts": {
-    "build": "yarn workspace @package/api build",
+    "build": "yarn workspace @package/common build && yarn workspace @package/api build",
     "lint": "eslint . --ext .ts,.gql 'packages/**/src/**'",
     "type-check": "yarn workspace @package/api build:types",
     "start": "yarn workspace @package/api start",
