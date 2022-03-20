@@ -22,6 +22,8 @@ jobs:
         run: yarn generate-schema
       - name: Run lint
         run: yarn lint
+      - name: Prepare tests
+        run: yarn workspace @package/common build
       - name: Run tests
         run: yarn test
       - name: Run build
