@@ -53,14 +53,6 @@ If you are using VSCode, you should install this recommended extensions:
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [Graphql Extension](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql)
 
-## More to come
-
-This repo is in constant change.
-The next steps are (not in that order):
-
-- Deploy support
-- CI/CD configuration
-
 ## Some decisions and tools used in this repo
 
 - [Babel](https://babeljs.io/): transpile typescript into javascript
@@ -72,6 +64,8 @@ The next steps are (not in that order):
 - [@graphql-codegen](https://www.graphql-code-generator.com/): to generate code (merged schema and types for typescript) from th GraphQL Schema.
 - [@graphql-eslint](https://github.com/dotansimha/graphql-eslint): integrate GraphQL and ESLint to define rules to a better development experience.
 - [Jest](https://jestjs.io/): testing Framework with a focus on simplicity.
+- Github Actions: You need to enable Github actions to be able to run tests and builds automatically.
+- CircleCI: You need to connect CircleCI to your repository to be able to run tests and builds automatically.
 
 ## Useful commands
 

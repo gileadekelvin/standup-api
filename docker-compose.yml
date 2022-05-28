@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   graphql-api:
-    image: node:12.22.6
+    image: node:16.15.0
     user: $HOSTUSER
     working_dir: /home/$USER/app
     container_name: graphql-api-container
@@ -24,7 +24,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - grpahqlapimongodata:/data/db
+      - graphqlapimongodata:/data/db
 
 volumes:
-  grpahqlapimongodata:
+  graphqlapimongodata:
