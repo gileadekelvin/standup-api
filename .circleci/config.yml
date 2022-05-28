@@ -4,18 +4,32 @@ orbs:
   node: circleci/node@5.0.1
 
 jobs:
-  test:
+  test_and_build:
     docker:
-      - image: cimg/node:12.22.6
+      - image: cimg/node:16.15.0
+    resource_class: medium
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
       - run:
+          name: Generate schema
+          command: yarn generate-schema
+      - run:
+          name: Run lint
+          command: yarn lint
+      - run:
+          name: Prepare tests
+          command: yarn workspace @package/common build
+      - run:
           name: Run tests
           command: yarn test
+      - run:
+          name: Run build
+          command: yarn build
+
 
 workflows:
-  sample:
+  test_build:
     jobs:
-      - test
+      - test_and_build
