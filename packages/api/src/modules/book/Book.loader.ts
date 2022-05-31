@@ -1,7 +1,11 @@
 import { BookModel } from '@package/common';
 
-export const loadBooks = async () => {
-  const books = await BookModel.find({});
+import { QueryBooksArgs } from '../schema';
 
+export const loadBooks = async (args: QueryBooksArgs) => {
+  const filters = {
+    ...(args.creatorId ? { creatorId: args.creatorId } : {}),
+  };
+  const books = await BookModel.find(filters);
   return books;
 };
