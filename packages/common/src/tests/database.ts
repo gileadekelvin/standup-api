@@ -5,7 +5,7 @@ export const connectDatabase = async () => {
   // @ts-ignore
   const uri = global.__MONGO_URI__;
 
-  mongoose.connect(uri);
+  await mongoose.connect(uri);
 };
 
 export const closeDatabase = async () => {

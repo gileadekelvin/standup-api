@@ -12,6 +12,7 @@ input CreateBookInput {
   title: String!
   author: String
   page: Int
+  creatorId: ID
 }
 
 """

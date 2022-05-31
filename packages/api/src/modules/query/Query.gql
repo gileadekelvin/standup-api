@@ -2,5 +2,5 @@
 Query type
 """
 type Query {
-  books: [Book]
+  books(creatorId: ID): [Book]
 }

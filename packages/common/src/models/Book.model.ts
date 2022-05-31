@@ -14,6 +14,10 @@ const schema = new mongoose.Schema(
       type: Number,
       required: false,
     },
+    creatorId: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: {
@@ -29,6 +33,7 @@ export interface IBook extends Document {
   title: string;
   author?: string;
   page?: number;
+  creatorId?: string;
 }
 
 export const BookModel: Model<IBook> = mongoose.model('Book', schema);

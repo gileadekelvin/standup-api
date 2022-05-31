@@ -28,5 +28,4 @@
       "@package/common": ["packages/common/src"]
     },
   },
-  "exclude": ["**/*.spec.ts"]
 }

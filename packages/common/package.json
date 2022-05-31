@@ -6,7 +6,7 @@
   "module": "src/index.ts",
   "scripts": {
     "build": "yarn build:types && yarn build:js",
-    "build:types": "tsc --noEmit",
+    "build:types": "tsc --project tsconfig.build.json --noEmit",
     "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
     "build:watch": "yarn build:js --watch"
   },

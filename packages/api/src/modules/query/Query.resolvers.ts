@@ -3,7 +3,9 @@ import { loadBooks } from '../book/Book.loader';
 
 const Query: Resolvers = {
   Query: {
-    books: () => loadBooks(),
+    books: (_, args) => {
+      return loadBooks(args);
+    },
   },
 };
 
