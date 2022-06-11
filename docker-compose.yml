@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  graphql-api:
+    image: node:16.15.0
+    user: $HOSTUSER
+    working_dir: /home/$USER/app
+    container_name: graphql-api-container
+    env_file: .env
+    volumes:
+      - .:/home/$USER/app
+      - /home/$USER/.cache/yarn:/home/$USER/.cache/yarn
+      - /home/$USER/.yarn:/home/$USER/.yarn
+    depends_on:
+      - mongo
+    ports:
+      - 5000:5000
+    command: yarn start
+
+  mongo:
+    image: mongo:5.0.6
+    container_name: graphql-api-mongo
+    env_file: .env
+    ports:
+      - 27017:27017
+    volumes:
+      - graphqlapimongodata:/data/db
+
+volumes:
+  graphqlapimongodata:

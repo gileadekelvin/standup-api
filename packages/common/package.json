@@ -1,0 +1,30 @@
+{
+  "name": "@package/common",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "yarn build:types && yarn build:js",
+    "build:types": "tsc --project tsconfig.build.json --noEmit",
+    "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
+    "build:watch": "yarn build:js --watch"
+  },
+  "keywords": [],
+  "author": "gileadekelvin",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
+    "@types/faker": "5.5.3",
+    "faker": "5.5.3",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "mongoose": "^6.2.2"
+  }
+}

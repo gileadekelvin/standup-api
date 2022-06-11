@@ -1,0 +1,4 @@
+**/dist/**
+**/node_modules/**
+data/schema.graphql
+packages/api/src/modules/schema.ts

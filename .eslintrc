@@ -1,0 +1,55 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "overrides": [
+    {
+      "files": ["*.gql"],
+      "extends": "plugin:@graphql-eslint/schema-recommended",
+      "parserOptions": {
+        "schema": "./data/schema.graphql"
+      },
+      "rules": {
+        "@graphql-eslint/naming-convention": ["error", { "allowLeadingUnderscore": true }],
+        "@graphql-eslint/strict-id-in-types": [
+          "error",
+          {
+            "acceptedIdNames": ["id", "_id"],
+            "acceptedIdTypes": ["ID"],
+            "exceptions": { "types": ["Mutation"], "suffixes": ["Payload"] }
+          }
+        ]
+      }
+    }
+  ],
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
+  ],
+  "plugins": ["@typescript-eslint", "jest"],
+  "rules": {
+    "no-console": 2,
+    "arrow-body-style": 0,
+    "implicit-arrow-linebreak": 0,
+    "import/extensions": [0, "never", { "ts": "never" }],
+    "import/prefer-default-export": 0,
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "eslint-import-resolver-typescript": true
+    },
+    "jest": {
+      "version": 27
+    }
+  },
+  "env": {
+    "jest/globals": true
+  }
+}

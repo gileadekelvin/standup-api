@@ -1,0 +1,10 @@
+"""
+Book type
+"""
+type Book {
+  _id: ID!
+  title: String!
+  author: String
+  page: Int
+  creatorId: ID
+}

@@ -1,0 +1,4 @@
+"""Mutation type"""
+type Mutation {
+  test(input: String): String
+}

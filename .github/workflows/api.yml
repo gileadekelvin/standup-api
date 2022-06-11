@@ -1,0 +1,30 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Test and Build
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn
+      - name: Generate schema
+        run: yarn generate-schema
+      - name: Run lint
+        run: yarn lint
+      - name: Prepare tests
+        run: yarn workspace @package/common build
+      - name: Run tests
+        run: yarn test
+      - name: Run build
+        run: yarn build
