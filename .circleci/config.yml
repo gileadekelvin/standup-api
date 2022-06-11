@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.1
+  gcp-cli: circleci/gcp-cli@2.4.0
 
 jobs:
   test_and_build:
@@ -28,8 +29,38 @@ jobs:
           name: Run build
           command: yarn build
 
+  deploy:
+    executor: gcp-cli/google
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '5c:90:f9:10:c6:6c:f6:c2:0c:b1:89:89:a1:a3:73:f0'
+      - gcp-cli/initialize
+      - run:
+          name: list ssh
+          command: ls -laih ~/.ssh/config
+      - run:
+          name: Connect to VM
+          command: 
+            ssh -o "StrictHostKeyChecking no" $USERNAME@$SERVER "
+            cd standup-api/;
+            git pull;
+            source /home/$USERNAME/.nvm/nvm.sh
+            echo $PATH;
+            echo $USER;
+            node --version;
+            yarn --version;
+            yarn install --pure-lockfile;
+            yarn generate-schema;
+            yarn build;
+            pm2 stop api;
+            pm2 delete api;
+            pm2 start packages/api/dist/index.js --name api;"
 
 workflows:
-  test_build:
+  test_build_deploy:
     jobs:
       - test_and_build
+      - deploy:
+          requires:
+            - test_and_build
