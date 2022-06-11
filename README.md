@@ -1,13 +1,15 @@
-# GraphQL API
+# Standup meeting API
 
-![example workflow](https://github.com/gileadekelvin/graphql-api/actions/workflows/api.yml/badge.svg)
+![Github](https://github.com/gileadekelvin/standup-api/actions/workflows/api.yml/badge.svg)
+![CircleCI](https://circleci.com/gh/gileadekelvin/standup-api.svg?style=svg)
 
+This repository has the objective to to provide an api to a Standup meeting application.
 
-This repository has the objective to configure a minimum API to be used and forked by future projects.
-
-The configuration used in this repository represents the best practices to develop a GraphQL API.
-
-This respository also aims to be a playground to test bleeding edges tools in develop a API. Feel free to contribute.
+We use:
+- GraphQL
+- Mongo
+- TypeScript
+- Nodejs (Express)
 
 To get started you should have `yarn` installed and follow the commands:
 
@@ -34,7 +36,7 @@ docker-compose up -d mongo
 With docker-compose:
 
 ```sh
-HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up graphql-api
+HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up standup-api
 ```
 
 Without docker-compose:

@@ -1,5 +1,5 @@
 {
-  "name": "@package/common",
+  "name": "@standup/common",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
