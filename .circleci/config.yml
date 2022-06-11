@@ -41,8 +41,7 @@ jobs:
           command: ls -laih ~/.ssh/config
       - run:
           name: Connect to VM
-          command: 
-            ssh -o "StrictHostKeyChecking no" $USERNAME@$SERVER "
+          command: ssh -o "StrictHostKeyChecking no" $USERNAME@$SERVER "
             cd standup-api/;
             git pull;
             source /home/$USERNAME/.nvm/nvm.sh
@@ -58,9 +57,13 @@ jobs:
             pm2 start packages/api/dist/index.js --name api;"
 
 workflows:
-  test_build_deploy:
+  build:
     jobs:
       - test_and_build
       - deploy:
+          filters:
+            branches:
+              only:
+                - main
           requires:
             - test_and_build
