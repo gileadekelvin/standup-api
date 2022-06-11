@@ -1,13 +1,13 @@
 {
-  "name": "graphql-api",
+  "name": "standup-api",
   "version": "0.0.1",
   "description": "",
   "main": "/packages/api/src/index.js",
   "scripts": {
-    "build": "yarn workspace @package/common build && yarn workspace @package/api build",
+    "build": "yarn workspace @standup/common build && yarn workspace @standup/api build",
     "lint": "eslint . --ext .ts,.gql 'packages/**/src/**'",
-    "type-check": "yarn workspace @package/api build:types",
-    "start": "yarn workspace @package/api start",
+    "type-check": "yarn workspace @standup/api build:types",
+    "start": "yarn workspace @standup/api start",
     "generate-schema": "graphql-codegen --config codegen.yml",
     "prepare": "husky install",
     "test": "jest",

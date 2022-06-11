@@ -24,8 +24,8 @@
     "declaration": true,
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     "paths": {
-      "@package/api": ["packages/api/src"],
-      "@package/common": ["packages/common/src"]
+      "@standup/api": ["packages/api/src"],
+      "@standup/common": ["packages/common/src"]
     },
   },
 }

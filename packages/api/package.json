@@ -1,5 +1,5 @@
 {
-  "name": "@package/api",
+  "name": "@standup/api",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build:types": "tsc --project tsconfig.build.json --noEmit",
     "build:js": "babel src --out-dir dist --extensions \".ts\" --copy-files --source-maps --verbose",
     "build:watch": "yarn build:js --watch",
-    "start": "yarn concurrently \"yarn workspace @package/common build:watch\" \"yarn build:watch\" \"nodemon dist/index.js\""
+    "start": "yarn concurrently \"yarn workspace @standup/common build:watch\" \"yarn build:watch\" \"nodemon dist/index.js\""
   },
   "keywords": [],
   "author": "gileadekelvin",
@@ -29,7 +29,7 @@
     "@graphql-tools/load-files": "^6.5.3",
     "@graphql-tools/merge": "^8.2.2",
     "@graphql-tools/schema": "^8.3.1",
-    "@package/common": "*",
+    "@standup/common": "*",
     "apollo-server-core": "^3.6.0",
     "apollo-server-express": "^3.6.0",
     "express": "^4.17.2",

@@ -2,7 +2,7 @@ import Faker from 'faker';
 import { graphql, ExecutionResult, GraphQLSchema, print } from 'graphql';
 import { gql } from 'graphql-tag';
 
-import { connectDatabase, closeDatabase } from '@package/common';
+import { connectDatabase, closeDatabase } from '@standup/common';
 
 import { buildCompleteSchema } from '../../../buildSchema';
 import { CreateBookPayload } from '../../schema';

@@ -23,7 +23,7 @@ jobs:
       - name: Run lint
         run: yarn lint
       - name: Prepare tests
-        run: yarn workspace @package/common build
+        run: yarn workspace @standup/common build
       - name: Run tests
         run: yarn test
       - name: Run build

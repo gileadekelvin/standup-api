@@ -1,4 +1,4 @@
-import { BookModel } from '@package/common';
+import { BookModel } from '@standup/common';
 
 import { MutationCreateBookArgs } from '../../schema';
 

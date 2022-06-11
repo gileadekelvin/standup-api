@@ -20,7 +20,7 @@ jobs:
           command: yarn lint
       - run:
           name: Prepare tests
-          command: yarn workspace @package/common build
+          command: yarn workspace @standup/common build
       - run:
           name: Run tests
           command: yarn test
