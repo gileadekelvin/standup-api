@@ -24,10 +24,11 @@ const DailySchema = new mongoose.Schema(
       ref: 'Team',
       required: true,
     },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
+    author: {
+      type: {
+        userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+        name: { type: Schema.Types.String, required: true },
+      },
     },
   },
   {
@@ -53,7 +54,7 @@ export interface Daily extends Document {
   today: task[] | null;
   blocks: task[] | null;
   teamId: string;
-  userId: string;
+  author: { userId: string; name: string };
   createdAt: Date;
   updatedAt: Date;
 }

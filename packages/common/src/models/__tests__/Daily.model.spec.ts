@@ -33,11 +33,17 @@ describe('Test DailyModel', () => {
         { text: Faker.lorem.sentences(), status: { done: true, updatedAt: new Date() } },
       ],
       teamId: user.teamId,
-      userId: user._id,
+      author: {
+        userId: user._id,
+        name: user.name,
+      },
     });
 
     const dailyFromDb = await DailyModel.findById(daily._id);
     expect(dailyFromDb).toBeDefined();
+
+    expect(daily.author.userId).toEqual(user._id);
+    expect(daily.author.name).toEqual(user.name);
 
     const yesterday = dailyFromDb?.yesterday;
     expect(yesterday).toBeDefined();
