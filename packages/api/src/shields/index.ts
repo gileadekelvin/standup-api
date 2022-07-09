@@ -2,7 +2,7 @@ import { allow, rule, shield } from 'graphql-shield';
 import { AuthenticationError } from 'apollo-server-core';
 
 const isAuthenticated = rule({ cache: 'contextual' })(async (_parent, _args, ctx) => {
-  return ctx.user !== null;
+  return !!ctx.user;
 });
 
 const shields = shield(

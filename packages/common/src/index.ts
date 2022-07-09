@@ -7,3 +7,5 @@ export { Daily, DailyModel } from './models/Daily.model';
 export { connectDB } from './database';
 
 export { connectDatabase, closeDatabase, clearDatabase } from './tests/database';
+
+export { createUser } from './helpers/testUtils/createUser';

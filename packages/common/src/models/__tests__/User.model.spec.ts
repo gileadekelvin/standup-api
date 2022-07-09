@@ -24,6 +24,7 @@ describe('Test UserModel', () => {
       bio: Faker.lorem.paragraph(),
       role: { name: 'admin', level: 'organization' },
       teamId: team._id,
+      googleId: Faker.datatype.uuid(),
     });
 
     const userFromDb = await UserModel.findById(user._id);
