@@ -27,6 +27,11 @@ const schema = new mongoose.Schema(
       ref: 'Team',
       required: true,
     },
+    googleId: {
+      type: Schema.Types.String,
+      required: true,
+      index: true,
+    },
   },
   {
     timestamps: {
