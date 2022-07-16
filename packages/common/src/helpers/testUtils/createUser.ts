@@ -24,6 +24,7 @@ export const createUser = async (
     bio: Faker.lorem.paragraph(),
     role: { name: 'admin', level: 'organization' },
     teamId: team._id,
+    googleId: Faker.datatype.uuid(),
     ...userPayload,
   });
 

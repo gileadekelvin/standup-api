@@ -36,7 +36,9 @@
     "import/extensions": [0, "never", { "ts": "never" }],
     "import/prefer-default-export": 0,
     "no-underscore-dangle": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 2]
   },
   "settings": {
     "import/resolver": {

@@ -32,8 +32,13 @@
     "@standup/common": "*",
     "apollo-server-core": "^3.6.0",
     "apollo-server-express": "^3.6.0",
+    "dotenv": "^16.0.1",
     "express": "^4.17.2",
+    "google-auth-library": "^8.1.0",
     "graphql": "^16.3.0",
-    "graphql-tag": "^2.12.6"
+    "graphql-middleware": "^6.1.29",
+    "graphql-shield": "^7.5.0",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^8.5.1"
   }
 }

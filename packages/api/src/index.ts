@@ -5,9 +5,13 @@ import http from 'http';
 import { connectDB } from '@standup/common';
 
 import { buildCompleteSchema } from './buildSchema';
+import { getAuthMiddleware } from './middlewares/auth';
+import { CustomRequest } from './types/CustomRequest';
 
 async function startApolloServer() {
   const app = express();
+  app.use(getAuthMiddleware());
+
   const httpServer = http.createServer(app);
 
   const schema = buildCompleteSchema();
@@ -15,6 +19,12 @@ async function startApolloServer() {
   const server = new ApolloServer({
     schema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: ({ req }) => {
+      return {
+        user: (req as CustomRequest).auth.user,
+        auth: { error: (req as CustomRequest).auth.error },
+      };
+    },
   });
 
   connectDB();

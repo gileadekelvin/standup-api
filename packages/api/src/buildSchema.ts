@@ -3,6 +3,9 @@ import { resolve } from 'path';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';
+import { applyMiddleware } from 'graphql-middleware';
+
+import shields from './shields/index';
 
 export const getTypes = () => {
   return loadFilesSync<string>(resolve(__dirname, 'modules', '**', '*'), {
@@ -38,5 +41,5 @@ export const buildCompleteSchema = () => {
     resolvers: schemaBuilded.resolvers,
   });
 
-  return executableSchema;
+  return applyMiddleware(executableSchema, shields);
 };

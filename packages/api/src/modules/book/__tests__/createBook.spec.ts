@@ -1,10 +1,11 @@
 import Faker from 'faker';
-import { graphql, ExecutionResult, GraphQLSchema, print } from 'graphql';
+import { graphql, ExecutionResult, print } from 'graphql';
 import { gql } from 'graphql-tag';
 
-import { connectDatabase, closeDatabase } from '@standup/common';
+import { createUser, User, connectDatabase, closeDatabase } from '@standup/common';
 
-import { buildCompleteSchema } from '../../../buildSchema';
+import { GraphQLContext } from '../../../types/GraphQLContext';
+import { schema, getTestContext } from '../../../tests/utils';
 import { CreateBookPayload } from '../../schema';
 
 const query = gql`
@@ -21,12 +22,14 @@ const query = gql`
   }
 `;
 
-let schema: GraphQLSchema;
+let user: User;
+let context: GraphQLContext;
 
 describe('Test createBook', () => {
   beforeAll(async () => {
-    schema = buildCompleteSchema();
     await connectDatabase();
+    user = (await createUser()).user;
+    context = getTestContext(user);
   });
 
   afterAll(async () => {
@@ -40,6 +43,7 @@ describe('Test createBook', () => {
       schema,
       source: print(query),
       variableValues: { input },
+      contextValue: context,
     })) as ExecutionResult<{ createBook: CreateBookPayload }>;
 
     expect(response).toBeDefined();
@@ -61,6 +65,7 @@ describe('Test createBook', () => {
       schema,
       source: print(query),
       variableValues: { input },
+      contextValue: context,
     })) as ExecutionResult<{ createBook: CreateBookPayload }>;
 
     expect(response).toBeDefined();

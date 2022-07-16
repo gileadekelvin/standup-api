@@ -1,0 +1,14 @@
+"""
+Login Mutation
+"""
+type Mutation {
+  login(token: String!): LoginPayload
+}
+
+"""
+Login response
+"""
+type LoginPayload {
+  token: String
+  Error: [String!]
+}
