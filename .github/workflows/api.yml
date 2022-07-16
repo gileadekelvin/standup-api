@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+env: 
+  API_SECRET: ${{ secrets.API_SECRET }}
 
 jobs:
   build:
