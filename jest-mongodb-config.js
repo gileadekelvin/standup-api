@@ -3,8 +3,8 @@ export const mongodbMemoryServerOptions = {
     version: '5.0.6',
     skipMD5: true,
   },
-  instance: {
-    dbName: 'test',
-  },
   autoStart: false,
+  instance: {},
+  debug: '1',
 };
+export const useSharedDBForAllJestWorkers = false;
