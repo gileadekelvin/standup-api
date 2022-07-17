@@ -1,7 +1,10 @@
+import { toGlobalId } from 'graphql-relay';
+
 import { DailyResolvers } from '../schema';
 
 const Daily: DailyResolvers = {
-  authorInfo: (_, __, ctx) => ctx.dataloaders.user.load(ctx.user.id),
+  id: (parent) => toGlobalId('Daily', parent._id),
+  authorInfo: (_, __, ctx) => ctx.dataloaders.User.load(ctx.user.id),
 };
 
 export default {

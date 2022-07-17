@@ -1,5 +1,6 @@
 import { graphql, ExecutionResult, print } from 'graphql';
 import { gql } from 'graphql-tag';
+import { toGlobalId } from 'graphql-relay';
 
 import { createUser, User, connectDatabase, closeDatabase } from '@standup/common';
 
@@ -52,7 +53,8 @@ describe('Test query User Me', () => {
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
 
-    expect(response?.data?.me.id).toEqual(user.id);
+    expect(response?.data?.me.id).toEqual(toGlobalId('User', user.id));
+    expect(response?.data?.me._id).toEqual(user._id.toString());
     expect(response?.data?.me.name).toEqual(user.name);
     expect(response?.data?.me.bio).toEqual(user.bio);
     expect(response?.data?.me.email).toEqual(user.email);
