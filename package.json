@@ -10,7 +10,7 @@
     "start": "yarn workspace @standup/api start",
     "generate-schema": "graphql-codegen --config codegen.yml",
     "prepare": "husky install",
-    "test": "jest",
+    "test": "jest --maxWorkers 4",
     "test:debug": "DEBUG=jest-mongodb:* jest",
     "coverage": "NODE_ENV=test yarn jest --coverage --force-exit --detectOpenHandles"
   },
