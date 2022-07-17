@@ -1,6 +1,7 @@
 import Faker from 'faker';
 import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
+import { toGlobalId } from 'graphql-relay';
 
 import {
   createUser,
@@ -107,12 +108,12 @@ describe('Test get team dailies', () => {
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
 
-    expect(response?.data?.me.id).toEqual(user.id);
+    expect(response?.data?.me.id).toEqual(toGlobalId('User', user.id));
 
     const firstDaily = response?.data?.me.team.dailies[0];
 
     expect(firstDaily._id).toEqual(dailies[0]._id.toString());
-    expect(firstDaily.id).toEqual(dailies[0].id);
+    expect(firstDaily.id).toEqual(toGlobalId('Daily', dailies[0].id));
     expect(firstDaily.teamId).toEqual(dailies[0].teamId.toString());
     expect(firstDaily.authorInfo._id).toEqual(user._id.toString());
     expect(firstDaily.author.userId).toEqual(dailies[0].author.userId.toString());
@@ -134,7 +135,7 @@ describe('Test get team dailies', () => {
     const secondDaily = response?.data?.me.team.dailies[1];
 
     expect(secondDaily._id).toEqual(dailies[1]._id.toString());
-    expect(secondDaily.id).toEqual(dailies[1].id);
+    expect(secondDaily.id).toEqual(toGlobalId('Daily', dailies[1].id));
     expect(secondDaily.teamId).toEqual(dailies[1].teamId.toString());
     expect(secondDaily.authorInfo._id).toEqual(user._id.toString());
     expect(secondDaily.author.userId).toEqual(dailies[1].author.userId.toString());

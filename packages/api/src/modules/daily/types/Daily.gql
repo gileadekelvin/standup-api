@@ -1,7 +1,7 @@
 """
 Daily register
 """
-type Daily {
+type Daily implements Node {
   _id: ID!
   id: ID!
   yesterday: [Task]
