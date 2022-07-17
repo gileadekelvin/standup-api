@@ -3,4 +3,5 @@ Query type
 """
 type Query {
   books(creatorId: ID): [Book]
+  me: User
 }

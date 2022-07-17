@@ -1,0 +1,13 @@
+"""
+Team
+"""
+type Team {
+  _id: ID!
+  id: ID!
+  name: String!
+  companyId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  dailies: [Daily]
+}

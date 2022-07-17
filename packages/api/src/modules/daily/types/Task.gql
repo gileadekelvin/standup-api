@@ -1,0 +1,15 @@
+"""
+Task status
+"""
+type TaskStatus {
+  done: Boolean
+  updatedAt: DateTime
+}
+
+"""
+Task from a daily
+"""
+type Task {
+  text: String!
+  status: TaskStatus
+}

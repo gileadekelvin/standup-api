@@ -1,6 +1,14 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-const schema = new mongoose.Schema(
+export interface Team extends Document {
+  _id: string;
+  name: string;
+  companyId: Schema.Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const schema = new mongoose.Schema<Team>(
   {
     name: {
       type: Schema.Types.String,
@@ -20,13 +28,5 @@ const schema = new mongoose.Schema(
     collection: 'team',
   },
 );
-
-export interface Team extends Document {
-  _id: string;
-  name: string;
-  companyId: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export const TeamModel: Model<Team> = mongoose.model('Team', schema);

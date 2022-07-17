@@ -1,0 +1,23 @@
+"""
+Role types
+"""
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+"""
+Role level types
+"""
+enum RoleLevel {
+  ORGANIZATION
+  TEAM
+}
+
+"""
+User Role
+"""
+type UserRole {
+  name: Role!
+  level: RoleLevel!
+}

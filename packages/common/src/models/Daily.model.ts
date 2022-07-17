@@ -1,11 +1,30 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
+type task = {
+  text: string;
+  status?: {
+    done: boolean;
+    updatedAt: Date;
+  };
+};
+
+export interface Daily extends Document {
+  _id: string;
+  yesterday: task[] | null;
+  today: task[] | null;
+  blocks: task[] | null;
+  teamId: Schema.Types.ObjectId;
+  author: { userId: Schema.Types.ObjectId; name: string };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 const TaskSchema = new mongoose.Schema({
   text: { type: Schema.Types.String, required: true },
   status: { type: { done: Schema.Types.Boolean, updatedAt: Schema.Types.Date }, required: false },
 });
 
-const DailySchema = new mongoose.Schema(
+const DailySchema = new mongoose.Schema<Daily>(
   {
     yesterday: {
       type: [TaskSchema],
@@ -39,24 +58,5 @@ const DailySchema = new mongoose.Schema(
     collection: 'daily',
   },
 );
-
-type task = {
-  text: string;
-  status?: {
-    done: boolean;
-    updatedAt: Date;
-  };
-};
-
-export interface Daily extends Document {
-  _id: string;
-  yesterday: task[] | null;
-  today: task[] | null;
-  blocks: task[] | null;
-  teamId: string;
-  author: { userId: string; name: string };
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export const DailyModel: Model<Daily> = mongoose.model('Daily', DailySchema);

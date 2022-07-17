@@ -10,7 +10,7 @@
       "rules": {
         "@graphql-eslint/naming-convention": ["error", { "allowLeadingUnderscore": true }],
         "@graphql-eslint/strict-id-in-types": [
-          "error",
+          "off",
           {
             "acceptedIdNames": ["id", "_id"],
             "acceptedIdTypes": ["ID"],

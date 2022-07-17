@@ -1,6 +1,22 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-const schema = new mongoose.Schema(
+export interface User extends Document {
+  _id: string;
+  name: string;
+  email: string;
+  verified?: boolean;
+  bio?: string;
+  role: {
+    name: string;
+    level: string;
+  };
+  teamId: Schema.Types.ObjectId;
+  googleId: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const schema = new mongoose.Schema<User>(
   {
     name: {
       type: Schema.Types.String,
@@ -41,20 +57,5 @@ const schema = new mongoose.Schema(
     collection: 'user',
   },
 );
-
-export interface User extends Document {
-  _id: string;
-  name: string;
-  email: string;
-  verified?: boolean;
-  bio?: string;
-  role: {
-    name: string;
-    level: string;
-  };
-  teamId: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export const UserModel: Model<User> = mongoose.model('User', schema);

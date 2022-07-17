@@ -1,6 +1,13 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
-const schema = new mongoose.Schema(
+export interface Company extends Document {
+  _id: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const schema = new mongoose.Schema<Company>(
   {
     name: {
       type: Schema.Types.String,
@@ -15,12 +22,5 @@ const schema = new mongoose.Schema(
     collection: 'company',
   },
 );
-
-export interface Company extends Document {
-  _id: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 export const CompanyModel: Model<Company> = mongoose.model('Company', schema);
