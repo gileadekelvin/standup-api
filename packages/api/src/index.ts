@@ -7,6 +7,7 @@ import { connectDB } from '@standup/common';
 import { buildCompleteSchema } from './buildSchema';
 import { getAuthMiddleware } from './middlewares/auth';
 import { CustomRequest } from './types/CustomRequest';
+import { getDataLoaders } from './modules/loaders';
 
 async function startApolloServer() {
   const app = express();
@@ -23,6 +24,7 @@ async function startApolloServer() {
       return {
         user: (req as CustomRequest).auth.user,
         auth: { error: (req as CustomRequest).auth.error },
+        dataloaders: getDataLoaders(),
       };
     },
   });

@@ -10,3 +10,9 @@ generates:
     plugins:
       - typescript
       - typescript-resolvers
+    config:
+      contextType: packages/api/src/types/GraphQLContext#GraphQLContext
+      mappers:
+        User: packages/common/src/models/User.model#User as UserModel
+        Team: packages/common/src/models/Team.model#Team as TeamModel
+        Daily: packages/common/src/models/Daily.model#Daily as DailyModel

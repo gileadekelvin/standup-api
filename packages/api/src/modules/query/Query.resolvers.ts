@@ -6,6 +6,7 @@ const Query: Resolvers = {
     books: (_, args) => {
       return loadBooks(args);
     },
+    me: (_, __, ctx) => ctx.dataloaders.user.load(ctx.user.id),
   },
 };
 

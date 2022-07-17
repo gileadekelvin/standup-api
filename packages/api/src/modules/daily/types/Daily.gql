@@ -1,0 +1,15 @@
+"""
+Daily register
+"""
+type Daily {
+  _id: ID!
+  id: ID!
+  yesterday: [Task]
+  today: [Task]
+  blocks: [Task]
+  teamId: String!
+  author: Author!
+  authorInfo: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

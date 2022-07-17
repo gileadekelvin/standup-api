@@ -1,0 +1,16 @@
+"""
+User
+"""
+type User {
+  _id: ID!
+  id: ID!
+  name: String!
+  email: String!
+  verified: Boolean
+  bio: String
+  role: UserRole!
+  teamId: String!
+  team: Team
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

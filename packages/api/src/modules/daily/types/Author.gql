@@ -1,0 +1,7 @@
+"""
+Author of daily register
+"""
+type Author {
+  userId: String!
+  name: String!
+}
