@@ -1,0 +1,16 @@
+"""
+Daily Connection
+"""
+type DailyConnection {
+  totalCount: Int
+  pageInfo: PageInfo!
+  edges: [DailyEdge]
+}
+
+"""
+Daily Edge
+"""
+type DailyEdge {
+  cursor: String!
+  node: Daily
+}
