@@ -48,6 +48,7 @@ const DailySchema = new mongoose.Schema<Daily>(
       type: Schema.Types.ObjectId,
       ref: 'Team',
       required: true,
+      index: true,
     },
     author: {
       type: {
@@ -64,5 +65,7 @@ const DailySchema = new mongoose.Schema<Daily>(
     collection: 'daily',
   },
 );
+
+DailySchema.index({ createdAt: -1 });
 
 export const DailyModel: Model<Daily> = mongoose.model('Daily', DailySchema);
