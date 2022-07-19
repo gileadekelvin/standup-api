@@ -1,22 +1,28 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
+export type Maybe<T> = T | null;
+
 type task = {
   text: string;
   status?: {
-    done: boolean;
-    updatedAt: Date;
-  };
+    done?: boolean | null | undefined;
+    updatedAt?: Date;
+  } | null;
 };
 
-export interface Daily extends Document {
+export interface DailyI {
   _id: string;
-  yesterday: task[] | null;
-  today: task[] | null;
-  blocks: task[] | null;
-  teamId: Schema.Types.ObjectId;
-  author: { userId: Schema.Types.ObjectId; name: string };
+  yesterday?: Maybe<task>[] | null | undefined;
+  today?: Maybe<task>[] | null | undefined;
+  blocks?: Maybe<task>[] | null | undefined;
+  teamId: Schema.Types.ObjectId | string;
+  author: { userId: Schema.Types.ObjectId | string; name: string };
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Daily extends Document, DailyI {
+  _id: string;
 }
 
 const TaskSchema = new mongoose.Schema({

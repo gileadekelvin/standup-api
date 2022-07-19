@@ -1,4 +1,4 @@
-import { graphql, ExecutionResult, print } from 'graphql';
+import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
 

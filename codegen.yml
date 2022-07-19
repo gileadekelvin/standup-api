@@ -15,4 +15,4 @@ generates:
       mappers:
         User: packages/common/src/models/User.model#User as UserModel
         Team: packages/common/src/models/Team.model#Team as TeamModel
-        Daily: packages/common/src/models/Daily.model#Daily as DailyModel
+        Daily: packages/common/src/models/Daily.model#DailyI as DailyModel
