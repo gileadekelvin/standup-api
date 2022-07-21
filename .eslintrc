@@ -38,7 +38,8 @@
     "no-underscore-dangle": "off",
     "object-curly-newline": "off",
     "indent": "off",
-    "@typescript-eslint/indent": ["error", 2]
+    "@typescript-eslint/indent": ["error", 2],
+    "function-paren-newline": ["off", "never"]
   },
   "settings": {
     "import/resolver": {
