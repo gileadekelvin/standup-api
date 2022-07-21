@@ -22,8 +22,8 @@ async function startApolloServer() {
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
     context: ({ req }) => {
       return {
-        user: (req as CustomRequest).auth.user,
-        auth: { error: (req as CustomRequest).auth.error },
+        user: (req as CustomRequest).auth?.user,
+        auth: { error: (req as CustomRequest).auth?.error },
         dataloaders: getDataLoaders(),
       };
     },

@@ -1,11 +1,29 @@
 import { resolve } from 'path';
+import { defaultsDeep } from 'lodash';
 
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';
 import { applyMiddleware } from 'graphql-middleware';
 
-import shields from './shields/index';
+import { getShield } from './shields';
+import { CommonShields } from './shields/CommonShields';
+
+export const getApiShields = () => {
+  return loadFilesSync<string>(resolve(__dirname, 'modules', '**', '*'), {
+    extensions: ['.shield.js', '.shield.ts'],
+  });
+};
+
+const buildShield = () => {
+  const apiShields = getApiShields();
+  const mergedApiShields = apiShields.reduce((previous, current) => {
+    return defaultsDeep(previous, current);
+  });
+  const mergedShields = defaultsDeep(mergedApiShields, CommonShields);
+
+  return getShield(mergedShields);
+};
 
 export const getTypes = () => {
   return loadFilesSync<string>(resolve(__dirname, 'modules', '**', '*'), {
@@ -41,5 +59,6 @@ export const buildCompleteSchema = () => {
     resolvers: schemaBuilded.resolvers,
   });
 
-  return applyMiddleware(executableSchema, shields);
+  const shield = buildShield();
+  return applyMiddleware(executableSchema, shield);
 };

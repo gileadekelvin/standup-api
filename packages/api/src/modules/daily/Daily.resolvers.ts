@@ -1,6 +1,12 @@
 import { toGlobalId } from 'graphql-relay';
 
-import { DailyResolvers } from '../schema';
+import { DailyResolvers, MutationResolvers } from '../schema';
+
+import { createDaily } from './resolvers/createDaily';
+
+const Mutation: MutationResolvers = {
+  createDaily: (_, args, ctx) => createDaily(args, ctx),
+};
 
 const Daily: DailyResolvers = {
   id: (parent) => toGlobalId('Daily', parent._id),
@@ -8,5 +14,6 @@ const Daily: DailyResolvers = {
 };
 
 export default {
+  ...{ Mutation },
   Daily,
 };

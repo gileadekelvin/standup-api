@@ -1,18 +1,10 @@
-import { allow, rule, shield } from 'graphql-shield';
+import { shield, IRules } from 'graphql-shield';
 import { AuthenticationError } from 'apollo-server-core';
 
-const isAuthenticated = rule({ cache: 'contextual' })(async (_parent, _args, ctx) => {
-  return !!ctx.user;
-});
+import { isAuthenticated } from './Rules';
 
-const shields = shield(
-  {
-    Mutation: {
-      login: allow,
-    },
-    LoginPayload: allow,
-  },
-  {
+export const getShield = (rules: IRules) => {
+  return shield(rules, {
     debug: true,
     fallbackError(error, _parent, _args, _ctx, _info) {
       // eslint-disable-next-line no-console
@@ -23,7 +15,5 @@ const shields = shield(
       return new AuthenticationError('Not Authorized!');
     },
     fallbackRule: isAuthenticated,
-  },
-);
-
-export default shields;
+  });
+};
