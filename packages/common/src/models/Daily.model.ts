@@ -34,15 +34,12 @@ const DailySchema = new mongoose.Schema<Daily>(
   {
     yesterday: {
       type: [TaskSchema],
-      required: true,
     },
     today: {
       type: [TaskSchema],
-      required: true,
     },
     blocks: {
       type: [TaskSchema],
-      required: true,
     },
     teamId: {
       type: Schema.Types.ObjectId,

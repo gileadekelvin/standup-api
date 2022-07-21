@@ -1,0 +1,23 @@
+"""
+Mutation type
+"""
+type Mutation {
+  createDaily(input: CreateDailyInput!): CreateDailyPayload
+}
+
+"""
+Create daily input fields
+"""
+input CreateDailyInput {
+  yesterday: [TaskInput!]
+  today: [TaskInput!]
+  blocks: [TaskInput!]
+}
+
+"""
+Create daily payload
+"""
+type CreateDailyPayload {
+  Error: [String!]
+  Daily: Daily
+}
