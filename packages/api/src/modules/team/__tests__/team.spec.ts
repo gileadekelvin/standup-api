@@ -1,11 +1,10 @@
-import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
 
 import { createUser, User, Team, connectDatabase, closeDatabase } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { schema, getTestContext } from '../../../tests/utils';
+import { schema, getTestContext, graphql } from '../../../tests/utils';
 
 const query = gql`
   query getUser {
@@ -44,11 +43,11 @@ describe('Test get team', () => {
   });
 
   test('should return team info', async () => {
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: context,
-    })) as any;
+      query,
+      context,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
