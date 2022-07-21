@@ -1,4 +1,3 @@
-export { IBook, BookModel } from './models/Book.model';
 export { Company, CompanyModel } from './models/Company.model';
 export { Team, TeamModel } from './models/Team.model';
 export { User, UserModel } from './models/User.model';

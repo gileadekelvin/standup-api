@@ -2,7 +2,6 @@
 Query type
 """
 type Query {
-  books(creatorId: ID): [Book]
   me: User
   node(id: ID!): Node
 }
