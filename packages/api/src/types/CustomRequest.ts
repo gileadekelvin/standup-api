@@ -1,8 +1,9 @@
+import { User } from '@standup/common';
 import { Request } from 'express';
 
 export interface CustomRequest extends Request {
   auth: {
-    user: any;
-    error: string | null;
+    user: User | null | undefined;
+    error: string | null | undefined;
   };
 }
