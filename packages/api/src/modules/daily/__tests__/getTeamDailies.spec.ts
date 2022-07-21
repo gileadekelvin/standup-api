@@ -177,12 +177,12 @@ describe('Test get team dailies', () => {
     expect(secondDaily.blocks[0].text).toEqual(dailies[0].blocks?.[0]?.text);
     expect(secondDaily.blocks[0].status.done).toEqual(dailies[0].blocks?.[0]?.status?.done);
     expect(secondDaily.blocks[0].status.updatedAt).toEqual(
-      dailies[0].blocks?.[0].status?.updatedAt,
+      dailies[0].blocks?.[0]?.status?.updatedAt,
     );
     expect(secondDaily.blocks[1].text).toEqual(dailies[0].blocks?.[1]?.text);
     expect(secondDaily.blocks[1].status.done).toEqual(dailies[0].blocks?.[1]?.status?.done);
     expect(secondDaily.blocks[1].status.updatedAt).toEqual(
-      dailies[0].blocks?.[1].status?.updatedAt,
+      dailies[0].blocks?.[1]?.status?.updatedAt,
     );
 
     expect(secondDaily.today[0].text).toEqual(dailies[0].today?.[0]?.text);
