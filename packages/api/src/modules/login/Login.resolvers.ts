@@ -1,6 +1,6 @@
 import { Resolvers } from '../schema';
 
-import { login as loginUser } from './mutations/login';
+import { login as loginUser } from './resolvers/login';
 
 const login: Resolvers = {
   Mutation: {
