@@ -1,5 +1,4 @@
 import Faker from 'faker';
-import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
 
@@ -13,7 +12,7 @@ import {
 } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { schema, getTestContext } from '../../../tests/utils';
+import { schema, getTestContext, graphql } from '../../../tests/utils';
 import { TeamDailiesArgs } from '../../schema';
 import { offsetToCursor } from '../../../helpers/cursor';
 
@@ -116,12 +115,12 @@ describe('Test get team dailies', () => {
     const input: TeamDailiesArgs = {
       first: 2,
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: context,
-      variableValues: input,
-    })) as any;
+      query,
+      context,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -149,16 +148,20 @@ describe('Test get team dailies', () => {
     expect(firstDaily.author.userId).toEqual(dailies[1].author.userId.toString());
     expect(firstDaily.author.name).toEqual(dailies[1].author.name);
 
-    expect(firstDaily.blocks[0].text).toEqual(dailies[1].blocks?.[0].text);
-    expect(firstDaily.blocks[0].status.done).toEqual(dailies[1].blocks?.[0].status?.done);
-    expect(firstDaily.blocks[0].status.updatedAt).toEqual(dailies[1].blocks?.[0].status?.updatedAt);
-    expect(firstDaily.blocks[1].text).toEqual(dailies[1].blocks?.[1].text);
-    expect(firstDaily.blocks[1].status.done).toEqual(dailies[1].blocks?.[1].status?.done);
-    expect(firstDaily.blocks[1].status.updatedAt).toEqual(dailies[1].blocks?.[1].status?.updatedAt);
+    expect(firstDaily.blocks[0].text).toEqual(dailies[1].blocks?.[0]?.text);
+    expect(firstDaily.blocks[0].status.done).toEqual(dailies[1].blocks?.[0]?.status?.done);
+    expect(firstDaily.blocks[0].status.updatedAt).toEqual(
+      dailies[1].blocks?.[0]?.status?.updatedAt,
+    );
+    expect(firstDaily.blocks[1].text).toEqual(dailies[1].blocks?.[1]?.text);
+    expect(firstDaily.blocks[1].status.done).toEqual(dailies[1].blocks?.[1]?.status?.done);
+    expect(firstDaily.blocks[1].status.updatedAt).toEqual(
+      dailies[1].blocks?.[1]?.status?.updatedAt,
+    );
 
-    expect(firstDaily.today[0].text).toEqual(dailies[1].today?.[0].text);
-    expect(firstDaily.today[0].status.done).toEqual(dailies[1].today?.[0].status?.done);
-    expect(firstDaily.today[0].status.updatedAt).toEqual(dailies[1].today?.[0].status?.updatedAt);
+    expect(firstDaily.today[0].text).toEqual(dailies[1].today?.[0]?.text);
+    expect(firstDaily.today[0].status.done).toEqual(dailies[1].today?.[0]?.status?.done);
+    expect(firstDaily.today[0].status.updatedAt).toEqual(dailies[1].today?.[0]?.status?.updatedAt);
 
     expect(firstDaily.yesterday).toHaveLength(0);
 
@@ -171,20 +174,20 @@ describe('Test get team dailies', () => {
     expect(secondDaily.author.userId).toEqual(dailies[0].author.userId.toString());
     expect(secondDaily.author.name).toEqual(dailies[0].author.name);
 
-    expect(secondDaily.blocks[0].text).toEqual(dailies[0].blocks?.[0].text);
-    expect(secondDaily.blocks[0].status.done).toEqual(dailies[0].blocks?.[0].status?.done);
+    expect(secondDaily.blocks[0].text).toEqual(dailies[0].blocks?.[0]?.text);
+    expect(secondDaily.blocks[0].status.done).toEqual(dailies[0].blocks?.[0]?.status?.done);
     expect(secondDaily.blocks[0].status.updatedAt).toEqual(
       dailies[0].blocks?.[0].status?.updatedAt,
     );
-    expect(secondDaily.blocks[1].text).toEqual(dailies[0].blocks?.[1].text);
-    expect(secondDaily.blocks[1].status.done).toEqual(dailies[0].blocks?.[1].status?.done);
+    expect(secondDaily.blocks[1].text).toEqual(dailies[0].blocks?.[1]?.text);
+    expect(secondDaily.blocks[1].status.done).toEqual(dailies[0].blocks?.[1]?.status?.done);
     expect(secondDaily.blocks[1].status.updatedAt).toEqual(
       dailies[0].blocks?.[1].status?.updatedAt,
     );
 
-    expect(secondDaily.today[0].text).toEqual(dailies[0].today?.[0].text);
-    expect(secondDaily.today[0].status.done).toEqual(dailies[0].today?.[0].status?.done);
-    expect(secondDaily.today[0].status.updatedAt).toEqual(dailies[0].today?.[0].status?.updatedAt);
+    expect(secondDaily.today[0].text).toEqual(dailies[0].today?.[0]?.text);
+    expect(secondDaily.today[0].status.done).toEqual(dailies[0].today?.[0]?.status?.done);
+    expect(secondDaily.today[0].status.updatedAt).toEqual(dailies[0].today?.[0]?.status?.updatedAt);
 
     expect(secondDaily.yesterday).toHaveLength(0);
   });

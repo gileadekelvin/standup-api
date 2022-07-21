@@ -1,11 +1,10 @@
 import Faker from 'faker';
-import { graphql, ExecutionResult, print } from 'graphql';
 import { gql } from 'graphql-tag';
 
 import { createUser, User, connectDatabase, closeDatabase } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { schema, getTestContext } from '../../../tests/utils';
+import { schema, getTestContext, graphql } from '../../../tests/utils';
 
 const query = gql`
   mutation createDaily($input: CreateDailyInput!) {
@@ -71,12 +70,12 @@ describe('Test createDaily', () => {
       },
     };
 
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      variableValues: input,
-      contextValue: context,
-    })) as ExecutionResult<{ createDaily: any }>;
+      query,
+      context,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();

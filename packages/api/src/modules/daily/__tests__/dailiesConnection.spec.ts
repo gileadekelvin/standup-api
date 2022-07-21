@@ -1,4 +1,3 @@
-import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
 
@@ -12,7 +11,7 @@ import {
 } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { schema, getTestContext } from '../../../tests/utils';
+import { schema, getTestContext, graphql } from '../../../tests/utils';
 import { TeamDailiesArgs } from '../../schema';
 import { offsetToCursor } from '../../../helpers/cursor';
 
@@ -98,12 +97,12 @@ describe('Test get team dailies', () => {
     const input: TeamDailiesArgs = {
       first: 2,
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextMary,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextMary,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -135,12 +134,13 @@ describe('Test get team dailies', () => {
       first: 2,
       after: offsetToCursor(dailiesPeter[3].createdAt, dailiesPeter[3]._id.toString()),
     };
-    const response = (await graphql({
+
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextMary,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextMary,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -172,12 +172,12 @@ describe('Test get team dailies', () => {
       first: 3,
       after: offsetToCursor(dailiesMary[1].createdAt, dailiesMary[1]._id.toString()),
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextMary,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextMary,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -204,12 +204,12 @@ describe('Test get team dailies', () => {
     const input: TeamDailiesArgs = {
       first: 0,
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextMary,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextMary,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -229,12 +229,12 @@ describe('Test get team dailies', () => {
       first: 0,
       after: 'invalid',
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextMary,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextMary,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
@@ -253,12 +253,12 @@ describe('Test get team dailies', () => {
     const input: TeamDailiesArgs = {
       first: 5,
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: contextJohn,
-      variableValues: input,
-    })) as any;
+      query,
+      context: contextJohn,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();

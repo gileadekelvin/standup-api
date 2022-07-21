@@ -1,4 +1,3 @@
-import { graphql, print } from 'graphql';
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
 
@@ -12,7 +11,7 @@ import {
 } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { schema, getTestContext } from '../../../tests/utils';
+import { schema, getTestContext, graphql } from '../../../tests/utils';
 
 const query = gql`
   query getNode($id: ID!) {
@@ -58,12 +57,12 @@ describe('Test node field', () => {
     const input = {
       id: toGlobalId('Daily', daily.id),
     };
-    const response = (await graphql({
+    const response = await graphql({
       schema,
-      source: print(query),
-      contextValue: context,
-      variableValues: input,
-    })) as any;
+      query,
+      context,
+      variables: input,
+    });
 
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
