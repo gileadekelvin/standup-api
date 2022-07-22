@@ -1,0 +1,24 @@
+"""
+Mutation type
+"""
+type Mutation {
+  updateDaily(input: UpdateDailyInput!): UpdateDailyPayload
+}
+
+"""
+Update daily input fields
+"""
+input UpdateDailyInput {
+  id: ID!
+  yesterday: [TaskInput!]
+  today: [TaskInput!]
+  blocks: [TaskInput!]
+}
+
+"""
+Create daily payload
+"""
+type UpdateDailyPayload {
+  Error: [String!]
+  Daily: Daily
+}
