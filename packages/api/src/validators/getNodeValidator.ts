@@ -1,4 +1,5 @@
 import { fromGlobalId } from 'graphql-relay';
+import { isValidObjectId } from 'mongoose';
 import { StringSchema, string } from 'yup';
 
 const parseGlobalRelayId = (validTypes: string[], value: string) => {
@@ -16,5 +17,8 @@ export const getNodeValidator = (validTypes: string[]) => {
     })
     .test('test-string', 'Invalid ID', (id) => {
       return !!id;
+    })
+    .test('test-object-id', 'Invalid Object ID', (id) => {
+      return isValidObjectId(id);
     }) as StringSchema;
 };
