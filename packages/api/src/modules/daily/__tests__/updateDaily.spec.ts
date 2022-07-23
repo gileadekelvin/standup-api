@@ -55,7 +55,7 @@ let user: User;
 let daily: Daily;
 let context: GraphQLContext;
 
-describe('Test createDaily', () => {
+describe('Test updateDaily', () => {
   beforeAll(async () => {
     await connectDatabase();
     user = (await createUser()).user;

@@ -21,3 +21,19 @@ type CreateDailyPayload {
   Error: [String!]
   Daily: Daily
 }
+
+"""
+Task status input fields
+"""
+input TaskStatusInput {
+  done: Boolean
+  updatedAt: DateTime
+}
+
+"""
+Task input fields
+"""
+input TaskInput {
+  text: String!
+  status: TaskStatusInput
+}
