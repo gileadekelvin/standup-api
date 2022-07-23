@@ -1,6 +1,5 @@
 import DataLoader from 'dataloader';
 import { Types } from 'mongoose';
-
 import { User, Team, Daily } from '@standup/common';
 
 export type GraphQLContext = {

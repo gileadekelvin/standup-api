@@ -1,6 +1,5 @@
 import { gql } from 'graphql-tag';
 import { toGlobalId } from 'graphql-relay';
-
 import {
   createUser,
   User,

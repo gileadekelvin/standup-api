@@ -1,4 +1,5 @@
 import { DailyModel } from '@standup/common';
+
 import { GraphQLContext } from '../../../../types/GraphQLContext';
 
 export const validateDaily = async (id: string, ctx: GraphQLContext) => {

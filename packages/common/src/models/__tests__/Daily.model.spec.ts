@@ -52,9 +52,9 @@ describe('Test DailyModel', () => {
     if (!yesterday || !daily.yesterday) {
       throw Error('yesterday is null');
     }
-    expect(yesterday[0].text).toBe(daily.yesterday[0].text);
-    expect(yesterday[0].status?.done).toBe(daily.yesterday[0].status?.done);
-    expect(yesterday[0].status?.updatedAt).toEqual(daily.yesterday[0].status?.updatedAt);
+    expect(yesterday[0]?.text).toBe(daily.yesterday[0]?.text);
+    expect(yesterday[0]?.status?.done).toBe(daily.yesterday[0]?.status?.done);
+    expect(yesterday[0]?.status?.updatedAt).toEqual(daily.yesterday[0]?.status?.updatedAt);
 
     const today = dailyFromDb?.today;
     expect(today).toBeDefined();
@@ -62,9 +62,9 @@ describe('Test DailyModel', () => {
     if (!today || !daily.today) {
       throw Error('today is null');
     }
-    expect(today[0].text).toBe(daily.today[0].text);
-    expect(today[0].status?.done).toBe(daily.today[0].status?.done);
-    expect(today[0].status?.updatedAt).toEqual(daily.today[0].status?.updatedAt);
+    expect(today[0]?.text).toBe(daily.today[0]?.text);
+    expect(today[0]?.status?.done).toBe(daily.today[0]?.status?.done);
+    expect(today[0]?.status?.updatedAt).toEqual(daily.today[0]?.status?.updatedAt);
 
     const blocks = dailyFromDb?.blocks;
     expect(blocks).toBeDefined();
@@ -72,8 +72,8 @@ describe('Test DailyModel', () => {
     if (!blocks || !daily.blocks) {
       throw Error('blocks is null');
     }
-    expect(blocks[0].text).toBe(daily.blocks[0].text);
-    expect(blocks[0].status?.done).toBe(daily.blocks[0].status?.done);
-    expect(blocks[0].status?.updatedAt).toEqual(daily.blocks[0].status?.updatedAt);
+    expect(blocks[0]?.text).toBe(daily.blocks[0]?.text);
+    expect(blocks[0]?.status?.done).toBe(daily.blocks[0]?.status?.done);
+    expect(blocks[0]?.status?.updatedAt).toEqual(daily.blocks[0]?.status?.updatedAt);
   });
 });
