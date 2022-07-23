@@ -1,6 +1,6 @@
 import { resolve } from 'path';
-import { defaultsDeep } from 'lodash';
 
+import { defaultsDeep } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import { loadFilesSync } from '@graphql-tools/load-files';

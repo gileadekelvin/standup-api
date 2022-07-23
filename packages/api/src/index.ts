@@ -1,7 +1,8 @@
+import http from 'http';
+
+import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
-import express from 'express';
-import http from 'http';
 import { connectDB } from '@standup/common';
 
 import { buildCompleteSchema } from './buildSchema';

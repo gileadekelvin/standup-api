@@ -39,7 +39,8 @@
     "object-curly-newline": "off",
     "indent": "off",
     "@typescript-eslint/indent": ["error", 2],
-    "function-paren-newline": ["off", "never"]
+    "function-paren-newline": ["off", "never"],
+    "import/order": ["error", { "newlines-between": "always" }]
   },
   "settings": {
     "import/resolver": {

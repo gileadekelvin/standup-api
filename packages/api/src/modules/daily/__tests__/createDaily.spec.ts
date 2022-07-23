@@ -1,6 +1,5 @@
 import Faker from 'faker';
 import { gql } from 'graphql-tag';
-
 import { createUser, User, connectDatabase, closeDatabase } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
