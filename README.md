@@ -6,10 +6,12 @@
 This repository has the objective to to provide an api to a Standup meeting application.
 
 We use:
+
 - GraphQL
 - Mongo
 - TypeScript
-- Nodejs (Express)
+- Nodejs
+- Apollo Server (with Express)
 
 To get started you should have `yarn` installed and follow the commands:
 
@@ -66,6 +68,8 @@ If you are using VSCode, you should install this recommended extensions:
 - [@graphql-codegen](https://www.graphql-code-generator.com/): to generate code (merged schema and types for typescript) from th GraphQL Schema.
 - [@graphql-eslint](https://github.com/dotansimha/graphql-eslint): integrate GraphQL and ESLint to define rules to a better development experience.
 - [Jest](https://jestjs.io/): testing Framework with a focus on simplicity.
+- [GraphQL Shield](https://www.graphql-shield.com/): graphql middleware to manage permissions and validate input types.
+- [Mongoose](https://mongoosejs.com/): Object data modeling library for Mongo and Nodejs.
 - Github Actions: You need to enable Github actions to be able to run tests and builds automatically.
 - CircleCI: You need to connect CircleCI to your repository to be able to run tests and builds automatically.
 
