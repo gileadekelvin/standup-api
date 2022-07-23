@@ -2,11 +2,11 @@ import { fromGlobalId } from 'graphql-relay';
 import { DailyModel } from '@standup/common';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
-import { MutationUpdateDailyArgs } from '../../schema';
+import { MutationDeleteDailyArgs } from '../../schema';
 
 import { validateDaily } from './helpers/validateDaily';
 
-export const updateDaily = async (args: MutationUpdateDailyArgs, ctx: GraphQLContext) => {
+export const deleteDaily = async (args: MutationDeleteDailyArgs, ctx: GraphQLContext) => {
   const { id } = fromGlobalId(args.input.id);
 
   const { Error } = await validateDaily(id, ctx);
@@ -15,8 +15,8 @@ export const updateDaily = async (args: MutationUpdateDailyArgs, ctx: GraphQLCon
   }
 
   try {
-    const dailyUpdated = await DailyModel.findByIdAndUpdate(id, args.input, { new: true });
-    return { Daily: dailyUpdated };
+    const dailyDeleted = await DailyModel.findByIdAndDelete(id);
+    return { Daily: dailyDeleted };
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);

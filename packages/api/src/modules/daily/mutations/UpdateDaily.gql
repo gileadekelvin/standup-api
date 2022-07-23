@@ -16,7 +16,7 @@ input UpdateDailyInput {
 }
 
 """
-Create daily payload
+Update daily payload
 """
 type UpdateDailyPayload {
   Error: [String!]

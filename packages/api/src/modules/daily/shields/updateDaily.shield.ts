@@ -5,7 +5,7 @@ import { getNodeValidator } from '../../../validators/getNodeValidator';
 
 import { validateTask } from './createDaily.shield';
 
-const updateDailyValidator = inputRule<MutationUpdateDailyArgs>('pdateDailyValidator')((yup) =>
+const updateDailyValidator = inputRule<MutationUpdateDailyArgs>('updateDailyValidator')((yup) =>
   yup
     .object({
       input: yup

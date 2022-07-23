@@ -1,0 +1,21 @@
+"""
+Mutation type
+"""
+type Mutation {
+  deleteDaily(input: DeleteDailyInput!): DeleteDailyPayload
+}
+
+"""
+Delete daily input fields
+"""
+input DeleteDailyInput {
+  id: ID!
+}
+
+"""
+Create daily payload
+"""
+type DeleteDailyPayload {
+  Error: [String!]
+  Daily: Daily
+}
