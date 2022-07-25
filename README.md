@@ -124,3 +124,9 @@ yarn coverage
 ```
 
 Access the report web page in `coverage/lcov-report/index.html`
+
+9. Copy schema to [standup-front](https://github.com/gileadekelvin/standup-front) repository
+
+```sh
+yarn copy-schema
+```
