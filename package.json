@@ -12,7 +12,8 @@
     "prepare": "husky install",
     "test": "jest --maxWorkers 4",
     "test:debug": "DEBUG=jest-mongodb:* jest",
-    "coverage": "NODE_ENV=test yarn jest --coverage --force-exit --detectOpenHandles"
+    "coverage": "NODE_ENV=test yarn jest --coverage --force-exit --detectOpenHandles",
+    "copy-schema": "node scripts/copySchema.js"
   },
   "keywords": [],
   "author": "gileadekelvin",
