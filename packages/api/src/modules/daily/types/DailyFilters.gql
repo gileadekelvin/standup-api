@@ -1,0 +1,7 @@
+"""
+Daily connection filters
+"""
+input DailyFilters {
+  UserId: String
+  RangeDate: RangeDate
+}
