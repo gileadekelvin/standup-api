@@ -15,11 +15,11 @@ import { TeamDailiesArgs } from '../../schema';
 import { offsetToCursor } from '../../../helpers/cursor';
 
 const query = gql`
-  query getDailies($first: Int!, $after: String) {
+  query getDailies($first: Int!, $after: String, $filters: DailyFilters) {
     me {
       id
       team {
-        dailies(first: $first, after: $after) {
+        dailies(first: $first, after: $after, filters: $filters) {
           totalCount
           pageInfo {
             startCursor
@@ -266,5 +266,69 @@ describe('Test get team dailies', () => {
 
     expect(response?.data?.me.team.dailies.edges).toHaveLength(5);
     expect(response?.data?.me.team.dailies.totalCount).toBe(5);
+  });
+
+  it('should return list of dailies filtered by User', async () => {
+    const input: TeamDailiesArgs = {
+      first: 5,
+      filters: {
+        UserId: mary.id,
+      },
+    };
+    const response = await graphql({
+      schema,
+      query,
+      context: contextMary,
+      variables: input,
+    });
+
+    expect(response).toBeDefined();
+    expect(response?.errors).toBeUndefined();
+
+    expect(response?.data?.me.id).toEqual(toGlobalId('User', mary.id));
+
+    expect(response?.data?.me.team.dailies.edges).toHaveLength(5);
+    expect(response?.data?.me.team.dailies.totalCount).toBe(5);
+  });
+
+  it('should return list of dailies filtered by CreatedAt date', async () => {
+    const newDaily = await DailyModel.create({
+      yesterday: [],
+      today: [],
+      blocks: [],
+      teamId: mary.teamId,
+      author: {
+        userId: mary._id,
+        name: mary.name,
+      },
+      createdAt: new Date('2021-11-07 00:00'),
+    });
+
+    const input: TeamDailiesArgs = {
+      first: 5,
+      filters: {
+        RangeDate: {
+          startDate: '2021-11-07',
+          endDate: '2022-11-09',
+        },
+      },
+    };
+    const response = await graphql({
+      schema,
+      query,
+      context: contextMary,
+      variables: input,
+    });
+
+    expect(response).toBeDefined();
+    expect(response?.errors).toBeUndefined();
+
+    expect(response?.data?.me.id).toEqual(toGlobalId('User', mary.id));
+
+    expect(response?.data?.me.team.dailies.totalCount).toBe(1);
+    expect(response?.data?.me.team.dailies.edges).toHaveLength(1);
+    expect(response?.data?.me.team.dailies.edges[0].node.id).toEqual(
+      toGlobalId('Daily', newDaily._id),
+    );
   });
 });

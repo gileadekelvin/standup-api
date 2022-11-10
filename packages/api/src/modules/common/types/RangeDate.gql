@@ -1,0 +1,7 @@
+"""
+Range date input
+"""
+input RangeDate {
+  startDate: String
+  endDate: String
+}

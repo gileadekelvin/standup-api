@@ -9,5 +9,5 @@ type Team implements Node {
   createdAt: DateTime!
   updatedAt: DateTime!
 
-  dailies(first: Int!, after: String): DailyConnection
+  dailies(first: Int!, after: String, filters: DailyFilters): DailyConnection
 }
