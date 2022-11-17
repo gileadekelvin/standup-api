@@ -301,7 +301,7 @@ describe('Test get team dailies', () => {
         userId: mary._id,
         name: mary.name,
       },
-      createdAt: new Date('2021-11-07 00:00'),
+      createdAt: new Date('2021-11-07 05:00'),
     });
 
     const input: TeamDailiesArgs = {

@@ -1,6 +1,7 @@
 import { FilterQuery } from 'mongoose';
 import { Daily } from '@standup/common';
 import { parseISO } from 'date-fns';
+import { format, utcToZonedTime } from 'date-fns-tz';
 
 import { TeamDailiesArgs, DailyFilters } from '../../schema';
 
@@ -16,7 +17,16 @@ const filterByAuthor = (userId: DailyFilters['UserId']): FilterQuery<Daily> | nu
 const filterByCreatedAt = (rangeDate: DailyFilters['RangeDate']): FilterQuery<Daily> | null => {
   if (rangeDate && rangeDate.startDate && rangeDate.endDate) {
     return {
-      createdAt: { $gte: parseISO(rangeDate.startDate), $lte: parseISO(rangeDate.endDate) },
+      createdAt: {
+        $gte: format(
+          utcToZonedTime(parseISO(rangeDate.startDate), 'UTC'),
+          'yyyy-MM-dd HH:mm',
+        ),
+        $lte: format(
+          utcToZonedTime(parseISO(rangeDate.endDate), 'UTC'),
+          'yyyy-MM-dd HH:mm',
+        ),
+      },
     };
   }
   return null;
