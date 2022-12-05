@@ -1,0 +1,1 @@
+HOSTUSER="$(id -u ${USER}):$(id -g ${USER})" docker-compose up standup-api

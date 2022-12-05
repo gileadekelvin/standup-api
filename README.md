@@ -47,6 +47,19 @@ Without docker-compose:
 yarn start
 ```
 
+With helper:
+
+On the first time give the helper permission to run
+
+```sh
+sudo chmod +x ./start.sh
+```
+
+Run the following command
+```sh
+./start.sh
+```
+
 Access http://localhost:5000/graphql
 
 ## Some tips
