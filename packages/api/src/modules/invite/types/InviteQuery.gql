@@ -1,0 +1,6 @@
+"""
+getInvite Query
+"""
+type Query {
+  getInvite: String
+}
