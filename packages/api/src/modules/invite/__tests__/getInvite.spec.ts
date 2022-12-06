@@ -3,7 +3,7 @@ import { createUser, User, connectDatabase, closeDatabase } from '@standup/commo
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
 import { schema, getTestContext, graphql } from '../../../tests/utils';
-import { verifyJwtUser } from '../../../auth';
+import { verifyJwtInvite } from '../resolvers/acceptInvite';
 
 const query = gql`
   query getInviteLink {
@@ -35,11 +35,9 @@ describe('Test getInvite', () => {
     expect(response).toBeDefined();
     expect(response?.errors).toBeUndefined();
 
-    const decoded: unknown = await verifyJwtUser(response.data.getInvite);
+    const decoded = await verifyJwtInvite(response.data.getInvite);
 
-    expect((decoded as { invitorId: string; teamId: string }).invitorId).toEqual(user.id);
-    expect((decoded as { invitorId: string; teamId: string }).teamId).toEqual(
-      user.teamId.toString(),
-    );
+    expect(decoded.invitorId).toEqual(user.id);
+    expect(decoded.teamId).toEqual(user.teamId.toString());
   });
 });
