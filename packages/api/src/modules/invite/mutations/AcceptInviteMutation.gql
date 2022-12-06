@@ -1,0 +1,21 @@
+"""
+Mutation type
+"""
+type Mutation {
+  acceptInvite(input: AcceptInviteInput!): AcceptInvitePayload
+}
+
+"""
+Change Team input field
+"""
+input AcceptInviteInput {
+  inviteLink: String!
+}
+
+"""
+Change Team payload
+"""
+type AcceptInvitePayload {
+  Error: [String!]
+  User: User
+}

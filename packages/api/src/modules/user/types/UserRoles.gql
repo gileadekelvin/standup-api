@@ -2,16 +2,16 @@
 Role types
 """
 enum Role {
-  ADMIN
-  MEMBER
+  admin
+  member
 }
 
 """
 Role level types
 """
 enum RoleLevel {
-  ORGANIZATION
-  TEAM
+  organization
+  team
 }
 
 """

@@ -22,7 +22,7 @@ describe('Test UserModel', () => {
       name: Faker.name.title(),
       email: Faker.internet.email(),
       bio: Faker.lorem.paragraph(),
-      role: { name: 'ADMIN', level: 'ORGANIZATION' },
+      role: { name: 'admin', level: 'organization' },
       teamId: team._id,
       googleId: Faker.datatype.uuid(),
     });
