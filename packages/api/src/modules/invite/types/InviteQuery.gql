@@ -3,4 +3,5 @@ getInvite Query
 """
 type Query {
   getInvite: String
+  getInviteInfo(inviteLink: String!): InviteInfo
 }

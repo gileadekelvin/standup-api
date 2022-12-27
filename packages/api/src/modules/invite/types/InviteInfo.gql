@@ -1,0 +1,7 @@
+"""
+Invite Info
+"""
+type InviteInfo {
+  TeamName: String
+  UserInvitor: String
+}
