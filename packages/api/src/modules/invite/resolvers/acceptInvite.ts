@@ -20,6 +20,10 @@ export const acceptInvite = async (args: MutationAcceptInviteArgs, ctx: GraphQLC
 
     const foundedUser = await UserModel.findById(ctx.user.id);
 
+    if (foundedUser?.teamId.toString() === decodedToken.teamId) {
+      return { Error: ['You already is a member of this team'] };
+    }
+
     const userUpdated = await UserModel.findByIdAndUpdate(
       ctx.user.id,
       { teamId: decodedToken.teamId, role: { name: 'member' } },
