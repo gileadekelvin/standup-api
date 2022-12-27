@@ -2,7 +2,14 @@ import jwt from 'jsonwebtoken';
 import { toGlobalId } from 'graphql-relay';
 import Faker from 'faker';
 import { gql } from 'graphql-tag';
-import { createUser, User, connectDatabase, closeDatabase, UserModel } from '@standup/common';
+import {
+  createUser,
+  User,
+  connectDatabase,
+  closeDatabase,
+  UserModel,
+  TeamChangeLogModel,
+} from '@standup/common';
 
 import { schema, getTestContext, graphql } from '../../../tests/utils';
 
@@ -62,5 +69,10 @@ describe('Test acceptInvite', () => {
     const newUserFromDB = await UserModel.findById(newUser.id);
     expect(response.data.acceptInvite.User.teamId).toEqual(newUserFromDB?.teamId.toString());
     expect(newUser.teamId).not.toEqual(newUserFromDB?.teamId.toString());
+
+    const log = await TeamChangeLogModel.find({ userId: newUser.id });
+    expect(log).toHaveLength(1);
+    expect(log[0].oldTeamId).toEqual(newUser.teamId);
+    expect(log[0].newTeamId).toEqual(newUserFromDB?.teamId);
   });
 });

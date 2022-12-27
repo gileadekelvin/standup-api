@@ -1,4 +1,4 @@
-import { UserModel } from '@standup/common';
+import { UserModel, TeamChangeLogModel } from '@standup/common';
 import jwt from 'jsonwebtoken';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
@@ -18,11 +18,19 @@ export const acceptInvite = async (args: MutationAcceptInviteArgs, ctx: GraphQLC
   try {
     const decodedToken = await verifyJwtInvite(args.input.inviteLink);
 
+    const foundedUser = await UserModel.findById(ctx.user.id);
+
     const userUpdated = await UserModel.findByIdAndUpdate(
       ctx.user.id,
       { teamId: decodedToken.teamId },
       { new: true },
     );
+
+    await TeamChangeLogModel.create({
+      userId: ctx.user.id,
+      oldTeamId: foundedUser?.teamId,
+      newTeamId: decodedToken.teamId,
+    });
 
     return { User: userUpdated };
   } catch (error) {
