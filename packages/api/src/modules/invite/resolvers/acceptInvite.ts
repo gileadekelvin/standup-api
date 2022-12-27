@@ -22,7 +22,7 @@ export const acceptInvite = async (args: MutationAcceptInviteArgs, ctx: GraphQLC
 
     const userUpdated = await UserModel.findByIdAndUpdate(
       ctx.user.id,
-      { teamId: decodedToken.teamId },
+      { teamId: decodedToken.teamId, role: { name: 'member' } },
       { new: true },
     );
 

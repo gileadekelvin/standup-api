@@ -69,6 +69,8 @@ describe('Test acceptInvite', () => {
     const newUserFromDB = await UserModel.findById(newUser.id);
     expect(response.data.acceptInvite.User.teamId).toEqual(newUserFromDB?.teamId.toString());
     expect(newUser.teamId).not.toEqual(newUserFromDB?.teamId.toString());
+    expect(newUser.role.name).toBe('admin');
+    expect(newUserFromDB?.role.name).toBe('member');
 
     const log = await TeamChangeLogModel.find({ userId: newUser.id });
     expect(log).toHaveLength(1);
