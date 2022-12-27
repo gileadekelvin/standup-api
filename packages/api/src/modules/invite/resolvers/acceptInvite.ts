@@ -1,5 +1,6 @@
 import { UserModel, TeamChangeLogModel } from '@standup/common';
 import jwt from 'jsonwebtoken';
+import * as Sentry from '@sentry/node';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
 import { MutationAcceptInviteArgs } from '../../schema';
@@ -40,6 +41,12 @@ export const acceptInvite = async (args: MutationAcceptInviteArgs, ctx: GraphQLC
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
+    Sentry.captureException(error, {
+      extra: {
+        ctx,
+        args,
+      },
+    });
     return { Error: ['Could not accept invite', error.message] };
   }
 };
