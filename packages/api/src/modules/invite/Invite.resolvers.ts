@@ -1,6 +1,7 @@
 import { MutationResolvers, QueryResolvers } from '../schema';
 
 import { acceptInvite } from './resolvers/acceptInvite';
+import { getInviteInfo } from './resolvers/getInviteInfo';
 import { getInviteLink } from './resolvers/getInviteLink';
 
 const Mutation: MutationResolvers = {
@@ -9,6 +10,7 @@ const Mutation: MutationResolvers = {
 
 const Query: QueryResolvers = {
   getInvite: (_, __, ctx) => getInviteLink(ctx),
+  getInviteInfo: (_, args) => getInviteInfo(args),
 };
 
 export default {
