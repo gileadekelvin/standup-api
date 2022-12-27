@@ -1,5 +1,6 @@
 import { fromGlobalId } from 'graphql-relay';
 import { DailyModel } from '@standup/common';
+import * as Sentry from '@sentry/node';
 
 import { GraphQLContext } from '../../../types/GraphQLContext';
 import { MutationUpdateDailyArgs } from '../../schema';
@@ -20,6 +21,12 @@ export const updateDaily = async (args: MutationUpdateDailyArgs, ctx: GraphQLCon
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
+    Sentry.captureException(error, {
+      extra: {
+        ctx,
+        args,
+      },
+    });
     return { Error: ['Could not update Daily', error.message] };
   }
 };
