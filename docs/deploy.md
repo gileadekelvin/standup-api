@@ -1,4 +1,8 @@
-## How to config CircleCI for deploy
+## Current state of the deployment
+
+- The deployment is configured with Railway app.
+
+## How to config CircleCI for deploy on GCP
 
 1. Before anything you need to provide a virtual machine in the GCP. And config that machine with a SSH key and make sure that this repo is cloned. The configuration od the machine in the GCP needs a individual documentation (yet to come!)
 

@@ -60,10 +60,3 @@ workflows:
   build:
     jobs:
       - test_and_build
-      - deploy:
-          filters:
-            branches:
-              only:
-                - main
-          requires:
-            - test_and_build
