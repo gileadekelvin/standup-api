@@ -41,10 +41,12 @@ async function startApolloServer() {
   await server.start();
   server.applyMiddleware({ app });
 
+  const port = process.env.PORT || 5000;
+
   // eslint-disable-next-line no-promise-executor-return
-  await new Promise<void>((resolve) => httpServer.listen({ port: 5000 }, resolve));
+  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
   // eslint-disable-next-line no-console
-  console.log(`🚀 Server ready at http://localhost:5000${server.graphqlPath}`);
+  console.log(`🚀 Server ready at http://localhost:${port}${server.graphqlPath}`);
 }
 
 startApolloServer();
