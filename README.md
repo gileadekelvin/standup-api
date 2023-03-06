@@ -1,4 +1,4 @@
-# Standup meeting API
+# Standup Meeting API
 
 ![Github](https://github.com/gileadekelvin/standup-api/actions/workflows/api.yml/badge.svg)
 ![CircleCI](https://circleci.com/gh/gileadekelvin/standup-api.svg?style=svg)
